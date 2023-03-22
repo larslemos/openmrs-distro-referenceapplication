@@ -2,9 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.openmrs.distro</groupId>
   <artifactId>referenceapplication</artifactId>
-  <name>Package and Run OpenMRS</name>
-  <description>Convenient project to build an OpenMRS distribution and run it</description>
+  <name>Package and Run Namibia PMTCT </name>
+  <description>Convenient project to build an OpenMRS Namibia OHRI distribution and run it</description>
 
+  
   <version>3.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -20,13 +21,10 @@
   </scm>
 
   <developers>
-    <developer>
-      <name>Romain Buisson</name>
-    </developer>
-    <developer>
-      <name>Ian Bacher</name>
-    </developer>
-  </developers>
+		<developer>
+			<name>UCSF OHRI </name>
+		</developer>
+	</developers>
 
   <modules>
     <module>distro</module>
@@ -109,8 +107,9 @@
         <plugin>
           <groupId>org.openmrs.maven.plugins</groupId>
           <artifactId>openmrs-sdk-maven-plugin</artifactId>
-          <version>4.5.0</version>
+          <version>4.4.0</version>
         </plugin>
+        
       </plugins>
     </pluginManagement>
   </build>
@@ -148,6 +147,7 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
+
     <repository>
       <id>sonatype-nexus-snapshots</id>
       <name>Sonatype Nexus Snapshots</name>
@@ -157,37 +157,21 @@
       </releases>
       <snapshots>
         <enabled>true</enabled>
-        <updatePolicy>interval:10080</updatePolicy>
+        <updatePolicy>interval:1000</updatePolicy>
       </snapshots>
     </repository>
-  </repositories>
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>openmrs-repo</id>
-      <name>OpenMRS Public Repository</name>
-      <url>https://mavenrepo.openmrs.org/public</url>
-    </pluginRepository>
-    <pluginRepository>
-      <id>openmrs-snapshots</id>
-      <name>OpenMRS Public Repository</name>
-      <url>https://mavenrepo.openmrs.org/snapshots</url>
+    <repository>
+			<id>openmrs-repo-public</id>
+			<name>OpenMRS Nexus Repository</name>
+			<url>http://mavenrepo.openmrs.org/nexus/content/repositories/public</url>
       <snapshots>
         <enabled>true</enabled>
+        <updatePolicy>interval:1000</updatePolicy>
       </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
+		</repository> 
+     
+  </repositories>
 
-  <distributionManagement>
-    <repository>
-      <id>openmrs-repo-releases</id>
-      <name>OpenMRS Releases Repo</name>
-      <url>https://mavenrepo.openmrs.org/releases</url>
-    </repository>
-    <snapshotRepository>
-      <id>openmrs-repo-snapshots</id>
-      <name>OpenMRS Snapshots Repo</name>
-      <url>https://mavenrepo.openmrs.org/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
+  
 </project>
