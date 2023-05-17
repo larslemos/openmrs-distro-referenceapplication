@@ -14,9 +14,13 @@ on:
   release:
     types:
       - created
-
+      env:
+        # Use docker.io for Docker Hub if empty
+        REGISTRY: ghcr.io
+        # github.repository as <account>/<repo>
+        IMAGE_NAME: ${{ github.repository }}
 jobs:
-  docker_distro:
+  docker_setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -41,10 +45,39 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+      - name: List dir 
+        run: |
+            ls -la -t
+   
+  docker_distro:
+    runs-on: ubuntu-latest
+    needs: docker_distro
+    steps:
+      - name: List dir 
+        run: |
+            ls -la -t
+      #Build Backend only for Merge and Push
       - name: Build Docker image
+        if: github.event_name != 'pull_request'
         uses: docker/build-push-action@v2
         with:
           context: .
+          push: false
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs-esm-ohri-backend:pre.${{ github.run_number }}
+          load: true
+          build-args: |
+            USERNAME=${{ github.actor }}
+            TOKEN=${{ secrets.GITHUB_TOKEN }}
+          cache-from: type=inline,ref=user/app:buildcache
+          cache-to: type=inline,ref=user/app:buildcache,mode=max
+
+      #Build Frontend only for Merge and Push
+      - name: Build Docker image
+        if: github.event_name != 'pull_request'
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./frontend/Dockerfile
           push: false
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs-esm-ohri-frontend:pre.${{ github.run_number }}
           load: true
@@ -53,13 +86,15 @@ jobs:
             TOKEN=${{ secrets.GITHUB_TOKEN }}
           cache-from: type=inline,ref=user/app:buildcache
           cache-to: type=inline,ref=user/app:buildcache,mode=max
+      
+    #Run Container and ensure that built version is stable
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
           platforms: linux/amd64,linux/arm64
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs-esm-ohri-frontend:pre.${{ github.run_number }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs-esm-ohri-distro:pre.${{ github.run_number }}
 
   sandbox:
     runs-on: ubuntu-latest

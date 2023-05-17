@@ -25,7 +25,7 @@ services:
       - ./frontend/ohri-config.json:/usr/share/nginx/html/ohri-config.json
 
   backend:
-    image: histacoohri/o3-reference-ohri-backend:2.5.9
+    image: histacoohri/o3-reference-ohri-backend:2.6.0
     depends_on:
       - db
     environment:
