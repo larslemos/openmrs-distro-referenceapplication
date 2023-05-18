@@ -5,11 +5,7 @@ on:
     branches:
       - "*"
     # Publish semver tags as releases.
-    tags: ["v*.*.*"]
   pull_request:
-    branches: ["master", "dev", "3.1-ohri"]
-    tags:
-      - "*"
     types: [opened, synchronize]
   release:
     types:
@@ -21,7 +17,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  docker_distro:
+  docker_setup:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,7 +31,6 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
@@ -48,50 +43,59 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
-      - name: Build Docker image
-        if: github.event_name != 'pull_request'
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: false
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-ohri-distro:di_${{ github.run_number }}
-          load: true
-          build-args: |
-            USERNAME=${{ github.actor }}
-            TOKEN=${{ secrets.GITHUB_TOKEN }}
-          cache-from: type=inline,ref=user/app:buildcache
-          cache-to: type=inline,ref=user/app:buildcache,mode=max
+  docker_distro_backend:
+    runs-on: ubuntu-latest
 
+    needs: docker_setup
+    steps:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-ohri-distro:di_${{ github.run_number }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-ohri-backend:ci_${{ github.run_number }}
           # tags: ${{ steps.meta.outputs.tags }}
           # labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=inline,ref=user/app:buildcache
           cache-to: type=inline,ref=user/app:buildcache,mode=max
+      - name: List dir and docker files
+        run: |
+          ls -la -t
+          docker ps -a
+
+  docker_distro_frontend:
+    runs-on: ubuntu-latest
+
+    needs: docker_setup
+    steps:
+      - name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-ohri-frontend:ci_${{ github.run_number }}
+          # tags: ${{ steps.meta.outputs.tags }}
+          # labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=inline,ref=user/app:buildcache
+          cache-to: type=inline,ref=user/app:buildcache,mode=max
+      - name: List dir
+        run: |
+          ls -la -t
+          docker ps -a
 
   run_containers:
     runs-on: ubuntu-latest
 
-    needs: docker_distro
+    needs: docker_setup
 
     steps:
-      - name: SSH into Azure Ubuntu Instance
-        uses: garygrossgarten/github-action-ssh@release
-        with:
-          command: cd /usr/share/tomcat/microfrontends/ohri_docs && sh update_docs.sh
-          host: ${{ secrets.AZURE_INSTANCE }}
-          username: ${{ secrets.AZURE_DOCKER_USERNAME }}
-          privateKey: ${{ secrets.AZURE_DOCKER_KEY }}
-          port: ${{ secrets.AZURE_PORT }}
-          script: |
-            docker stop $(docker ps -aq)
-            docker rm $(docker ps -aq)
-            docker run -d -p 8080:8080 ${DOCKERHUB_USERNAME}/openmrs3-ohri-distro:staging
+      - name: Run container to validate if built of images was successful
+        run: |
+          docker stop $(docker ps -aq)
+          docker rm $(docker ps -aq)
+          docker compose build
 
       - name: Wait for server to start
         run: sleep 30
