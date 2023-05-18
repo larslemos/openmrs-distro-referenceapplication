@@ -117,8 +117,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./gateaway
-          file: ./gateaway/Dockerfile
+          context: ./gateway
+          file: ./gateway/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-ohri-gateaway:latest,${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-ohri-gateaway:ci_${{ github.run_number }}
