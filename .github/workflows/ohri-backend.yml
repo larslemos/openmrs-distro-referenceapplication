@@ -86,6 +86,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
+          context: ./frontend
           file: ./frontend/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
@@ -116,7 +117,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          file: /gateaway/Dockerfile
+          context: ./gateaway
+          file: ./gateaway/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-ohri-gateaway:latest,${{ secrets.DOCKERHUB_USERNAME }}/openmrs3-ohri-gateaway:ci_${{ github.run_number }}
