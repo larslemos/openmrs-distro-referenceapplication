@@ -1,0 +1,98 @@
+version: "3.7"
+
+services:
+  gateway:
+    image: histacoohri/ohri-distro_proxy:latest
+    ports:
+      - "80:80"
+    networks:
+      - ohri-frontend
+      - ohri-backend
+    deploy:
+      replicas: 2
+
+  frontend:
+    image: histacoohri/ohri-distro-frontend:latest
+    environment:
+      SPA_PATH: /openmrs/spa
+      API_URL: /openmrs
+      SPA_CONFIG_URLS: /openmrs/spa/ohri-config.json
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      timeout: 15s
+    networks:
+      - ohri-frontend
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    # OHRI customizations
+    volumes:
+      - ./frontend/ohri-config.json:/usr/share/nginx/html/ohri-config.json
+
+  backend:
+    image: histacoohri/ohri-distro-backend-2_6:latest
+    environment:
+      OMRS_CONFIG_MODULE_WEB_ADMIN: "true"
+      OMRS_CONFIG_AUTO_UPDATE_DATABASE: "true"
+      OMRS_CONFIG_CREATE_TABLES: "true"
+      OMRS_CONFIG_CONNECTION_SERVER: db
+      OMRS_CONFIG_CONNECTION_DATABASE: openmrs
+      OMRS_CONFIG_CONNECTION_USERNAME: ${OPENMRS_DB_USER:-openmrs}
+      OMRS_CONFIG_CONNECTION_PASSWORD: ${OPENMRS_DB_PASSWORD:-openmrs}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/openmrs"]
+      timeout: 15s
+    networks:
+      - ohri-backend
+    depends_on:
+      - db
+    deploy:
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+    volumes:
+      - ohri-openmrs-data:/openmrs/data
+
+  # MariaDB
+  db:
+    image: mariadb:10.8.2
+    command: "mysqld --character-set-server=utf8 --collation-server=utf8_general_ci"
+    healthcheck:
+      test: 'mysql --user=${OMRS_DB_USER:-openmrs} --password=${OMRS_DB_PASSWORD:-openmrs} --execute "SHOW DATABASES;"'
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    environment:
+      MYSQL_DATABASE: openmrs
+      MYSQL_USER: ${OMRS_DB_USER:-openmrs}
+      MYSQL_PASSWORD: ${OMRS_DB_PASSWORD:-openmrs}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
+    networks:
+      - ohri-backend
+    # deploy:
+    #   replicas: 1
+    #   restart_policy:
+    #     delay: 10s
+    #     max_attempts: 10
+    #     window: 60s
+    volumes:
+      - ohri-openmrs-data:/var/lib/mysql
+
+  visualizer:
+    image: alexellis/visualizer:latest
+    ports:
+      - "8080:8080"
+    # volumes:
+    #   - "var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+networks:
+  ohri-frontend:
+  ohri-backend:
+
+volumes:
+  ohri-openmrs-data: ~
+  ohri-db-data: ~
