@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.9"
 
 services:
   gateway:
@@ -17,9 +17,6 @@ services:
       SPA_PATH: /openmrs/spa
       API_URL: /openmrs
       SPA_CONFIG_URLS: /openmrs/spa/ohri-config.json
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/"]
-      timeout: 15s
     networks:
       - ohri-frontend
     deploy:
@@ -40,9 +37,6 @@ services:
       OMRS_CONFIG_CONNECTION_DATABASE: openmrs
       OMRS_CONFIG_CONNECTION_USERNAME: ${OPENMRS_DB_USER:-openmrs}
       OMRS_CONFIG_CONNECTION_PASSWORD: ${OPENMRS_DB_PASSWORD:-openmrs}
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/openmrs"]
-      timeout: 15s
     networks:
       - ohri-backend
     depends_on:
@@ -58,11 +52,6 @@ services:
   db:
     image: mariadb:10.8.2
     command: "mysqld --character-set-server=utf8 --collation-server=utf8_general_ci"
-    healthcheck:
-      test: 'mysql --user=${OMRS_DB_USER:-openmrs} --password=${OMRS_DB_PASSWORD:-openmrs} --execute "SHOW DATABASES;"'
-      interval: 15s
-      timeout: 5s
-      retries: 5
     environment:
       MYSQL_DATABASE: openmrs
       MYSQL_USER: ${OMRS_DB_USER:-openmrs}
@@ -77,14 +66,14 @@ services:
     #     max_attempts: 10
     #     window: 60s
     volumes:
-      - ohri-openmrs-data:/var/lib/mysql
+      - ohri-db-data:/var/lib/mysql
 
   visualizer:
-    image: alexellis/visualizer:latest
+    image: dockersamples/visualizer:latest
     ports:
       - "8080:8080"
     # volumes:
-    #   - "var/run/docker.sock:/var/run/docker.sock"
+    #   - docker-sock:/var/run/docker.sock
     deploy:
       placement:
         constraints: [node.role == manager]
@@ -94,5 +83,5 @@ networks:
   ohri-backend:
 
 volumes:
-  ohri-openmrs-data: ~
-  ohri-db-data: ~
+  ohri-openmrs-data:
+  ohri-db-data:
