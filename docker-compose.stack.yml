@@ -1,33 +1,34 @@
-version: "3.7"
+version: "3.9"
 
 services:
   gateway:
-    image: histacoohri/ohri-distro_proxy:latest
-    depends_on:
-      - frontend
-      - backend
+    image: histacoohri/o3-reference-ohri-gateway:2.6
     ports:
       - "80:80"
+    networks:
+      - ohri-network
+    deploy:
+      replicas: 3
 
   frontend:
-    image: histacoohri/ohri-distro-frontend:latest
+    image: histacoohri/o3-reference-ohri-frontend:1.0.7
     environment:
       SPA_PATH: /openmrs/spa
       API_URL: /openmrs
       SPA_CONFIG_URLS: /openmrs/spa/ohri-config.json
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/"]
-      timeout: 5s
-    depends_on:
-      - backend
+      timeout: 15s
+    networks:
+      - ohri-network
+    deploy:
+      replicas: 3
     # OHRI customizations
     volumes:
       - ./frontend/ohri-config.json:/usr/share/nginx/html/ohri-config.json
 
   backend:
-    image: histacoohri/ohri-distro-backend-2_6:latest
-    depends_on:
-      - db
+    image: histacoohri/o3-reference-ohri-backend:2.6
     environment:
       OMRS_CONFIG_MODULE_WEB_ADMIN: "true"
       OMRS_CONFIG_AUTO_UPDATE_DATABASE: "true"
@@ -39,6 +40,12 @@ services:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/openmrs"]
       timeout: 5s
+    networks:
+      - ohri-network
+    deploy:
+      replicas: 3
+      placement:
+        constraints: [node.role == manager]
     volumes:
       - openmrs-data:/openmrs/data
 
@@ -56,9 +63,15 @@ services:
       MYSQL_USER: ${OMRS_DB_USER:-openmrs}
       MYSQL_PASSWORD: ${OMRS_DB_PASSWORD:-openmrs}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-openmrs}
+    networks:
+      - ohri-network
     volumes:
       - db-data:/var/lib/mysql
 
+networks:
+  ohri-network:
+    driver: overlay
+
 volumes:
-  openmrs-data: ~
-  db-data: ~
+  openmrs-data: {}
+  db-data: {}
