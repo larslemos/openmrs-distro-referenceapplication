@@ -20,9 +20,6 @@ services:
       timeout: 5s
     depends_on:
       - backend
-    # OHRI customizations
-    volumes:
-      - ./frontend/ohri-config.json:/usr/share/nginx/html/ohri-config.json
 
   backend:
     image: larslemos/ohri-distro-backend-2_6:latest
