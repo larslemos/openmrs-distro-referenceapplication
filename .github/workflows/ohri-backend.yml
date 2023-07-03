@@ -42,6 +42,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Validation for file changes
         id: check_file_changed
         run: |
           # Diff HEAD with the previous commit
@@ -61,7 +62,9 @@ jobs:
     if: needs.docker_check.outputs.gateway_changed == 'True'
     steps:
       - shell: pwsh
-        run: echo publish gateway
+        run: |
+          echo publish gateway
+          echo ${{ github.event.changes }}
 
   docker_distro_backend:
     runs-on: ubuntu-latest
