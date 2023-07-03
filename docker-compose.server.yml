@@ -17,7 +17,7 @@ services:
       API_URL: /openmrs
       SPA_CONFIG_URLS: /openmrs/spa/ohri-config.json
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/"]
+      test: ["CMD", "curl", "-f", "httpgit ://localhost/"]
       timeout: 10s
     depends_on:
       - backend
@@ -26,7 +26,7 @@ services:
       - ./frontend/ohri-config.json:/usr/share/nginx/html/ohri-config.json
 
   backend:
-    image: histacoohri/o3-ohri-namibia-frontend-distro-2_6:latest
+    image: histacoohri/o3-ohri-namibia-backend-distro-2_6:latest
     depends_on:
       - db
     environment:

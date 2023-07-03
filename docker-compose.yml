@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   gateway:
-    image: larslemos/ohri-distro_proxy:latest
+    image: histacoohri/o3-ohri-namibia-gateaway-distro:latest
     depends_on:
       - frontend
       - backend
@@ -10,11 +10,11 @@ services:
       - "80:80"
 
   frontend:
-    image: larslemos/ohri-distro-frontend:latest
+    image: histacoohri/o3-ohri-namibia-frontend-distro:4.4.5
     environment:
       SPA_PATH: /openmrs/spa
       API_URL: /openmrs
-      SPA_CONFIG_URLS: /openmrs/spa/ohri-config.json
+      SPA_CONFIG_URLS:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost/"]
       timeout: 5s
@@ -22,7 +22,7 @@ services:
       - backend
 
   backend:
-    image: larslemos/ohri-distro-backend-2_6:latest
+    image: histacoohri/o3-ohri-namibia-backend-distro-2_6:latest
     depends_on:
       - db
     environment:

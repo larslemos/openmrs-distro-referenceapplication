@@ -1,24 +1,22 @@
 {
   "frontendModules": {
-    "@ohri/openmrs-esm-ohri-cervical-cancer-app": "next",
+    "@openmrs/esm-login-app": "4.5.1-pre.789",
+    "@openmrs/esm-dispensing-app": "1.0.1-pre.196",
+    "@openmrs/esm-form-builder-app": "1.0.3-pre.339",
+    "@openmrs/esm-home-app": "4.2.1-pre.226",
+    "@openmrs/esm-implementer-tools-app": "4.5.1-pre.789",
+    "@openmrs/esm-patient-banner-app": "4.5.1-pre.1600",
+    "@openmrs/esm-patient-chart-app": "4.5.1-pre.1600",
+    "@openmrs/esm-patient-list-app": "4.5.1-pre.1646",
+    "@openmrs/esm-patient-search-app": "4.5.1-pre.1646",
+    "@openmrs/esm-patient-test-results-app": "4.5.1-pre.1600",
+    "@openmrs/esm-primary-navigation-app": "4.5.1-pre.789",
+
     "@ohri/openmrs-esm-ohri-core-app": "next",
-    "@ohri/openmrs-esm-ohri-covid-app": "next",
     "@ohri/openmrs-esm-ohri-form-render-app": "next",
     "@ohri/openmrs-esm-ohri-hiv-app": "next",
     "@ohri/openmrs-esm-ohri-pmtct": "next",
-    "@ohri/esm-namibia-emr-app": "next",
-
-    "@openmrs/esm-dispensing-app": "1.0.1-pre.196",
-    "@openmrs/esm-form-builder-app": "1.0.3-pre.339",
-    "@openmrs/esm-home-app": "4.1.1-pre.211",
-    "@openmrs/esm-implementer-tools-app": "4.4.2-pre.712",
-    "@openmrs/esm-login-app": "4.4.2-pre.712",
-    "@openmrs/esm-patient-banner-app": "4.5.1-pre.1503",
-    "@openmrs/esm-patient-chart-app": "4.5.1-pre.1503",
-    "@openmrs/esm-patient-list-app": "4.4.1-pre.1566",
-    "@openmrs/esm-patient-search-app": "4.4.1-pre.1566",
-    "@openmrs/esm-patient-test-results-app": "4.5.1-pre.1503",
-    "@openmrs/esm-primary-navigation-app": "4.4.2-pre.712"
+    "@ohri/esm-namibia-emr-app": "next"
   },
   "spaPath": "$SPA_PATH",
   "apiUrl": "$API_URL",
