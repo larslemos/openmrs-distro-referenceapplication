@@ -6,6 +6,7 @@
     "@ohri/openmrs-esm-ohri-form-render-app": "next",
     "@ohri/openmrs-esm-ohri-hiv-app": "next",
     "@ohri/openmrs-esm-ohri-pmtct": "next",
+    "@ohri/esm-namibia-emr-app": "next",
 
     "@openmrs/esm-dispensing-app": "1.0.1-pre.196",
     "@openmrs/esm-form-builder-app": "1.0.3-pre.339",
