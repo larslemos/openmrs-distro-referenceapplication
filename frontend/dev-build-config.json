@@ -1,0 +1,35 @@
+{
+  "frontendModules": {
+    "@openmrs/esm-devtools-app": "5.0.3-pre.857",
+    "@kenyaemr/esm-login-app": "5.0.1",
+    "@openmrs/esm-primary-navigation-app": "4.5.0",
+    "@openmrs/esm-home-app": "4.2.1-pre.248",
+    "@openmrs/esm-form-entry-app": "4.6.1-pre.1899",
+    "@openmrs/esm-patient-allergies-app": "4.6.1-pre.1899",
+    "@openmrs/esm-patient-appointments-app": "4.6.1-pre.1899",
+    "@openmrs/esm-patient-banner-app": "4.6.1-pre.1899",
+    "@openmrs/esm-patient-biometrics-app": "4.6.1-pre.1899",
+    "@openmrs/esm-patient-chart-app": "4.6.1-pre.1899",
+    "@openmrs/esm-patient-conditions-app": "4.6.1-pre.1899",
+    "@openmrs/esm-patient-forms-app": "4.6.1-pre.1899",
+    "@openmrs/esm-patient-vitals-app": "4.6.1-pre.1899",
+    "@openmrs/esm-active-visits-app": "4.5.1-pre.1763",
+    "@openmrs/esm-appointments-app": "4.5.1-pre.1763",
+    "@openmrs/esm-outpatient-app": "4.5.1-pre.1763",
+    "@kenyaemr/esm-patient-registration-app": "4.5.2",
+    "@openmrs/esm-patient-search-app": "4.5.1-pre.1763",
+    "@openmrs/esm-form-builder-app": "1.2.1-pre.462",
+    "@openmrs/esm-patient-programs-app": "4.6.1-pre.1899",
+    "@openmrs/esm-system-admin-app": "3.0.1-pre.61",
+
+    "@ohri/openmrs-esm-ohri-core-app": "next",
+    "@ohri/openmrs-esm-ohri-form-render-app": "next",
+    "@ohri/openmrs-esm-ohri-hiv-app": "next",
+    "@ohri/openmrs-esm-ohri-pmtct": "next",
+    "@ohri/esm-namibia-emr-app": "next"
+  },
+  "spaPath": "/openmrs/spa",
+  "apiUrl": "/openmrs",
+  "configUrls": ["$SPA_CONFIG_URLS"],
+  "importmap": "/openmrs/spa/importmap.json"
+}

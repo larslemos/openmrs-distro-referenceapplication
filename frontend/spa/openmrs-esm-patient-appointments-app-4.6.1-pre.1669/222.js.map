@@ -1,0 +1,1 @@
+{"version":3,"file":"222.js","mappings":"wOAWA,QAJgF,Y,IAAGA,EAAW,EAAXA,YACjF,OAAO,kBAACC,EAAAA,EAAe,CAACD,YAAaA","sources":["webpack://@openmrs/esm-patient-appointments-app/./src/appointments/appointments-detailed-summary.component.tsx"],"names":["patientUuid","AppointmentBase"],"sourceRoot":""}

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_openmrs_esm_home_app=self.webpackChunk_openmrs_esm_home_app||[]).push([[833],{833:e=>{e.exports=JSON.parse('{"activeVisits":"ביקורים פעילים","appointmentScheduling":"תזמון תורים","captureVitals":"לכידת נתוני חיים","configureMetadata":"הגדרת מטה-נתונים","dataManagement":"ניהול נתונים","reports":"דוחות","systemAdministration":"ניהול מערכת"}')}}]);

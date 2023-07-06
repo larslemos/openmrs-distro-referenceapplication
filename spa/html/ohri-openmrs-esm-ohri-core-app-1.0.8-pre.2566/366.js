@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_ohri_openmrs_esm_ohri_core_app=globalThis.webpackChunk_ohri_openmrs_esm_ohri_core_app||[]).push([[366],{3366:(e,o,t)=>{t.r(o),t.d(o,{default:()=>a});var n=t(7900),r=t.n(n),s=t(906);const a=function(){return r().createElement(s.ExtensionSlot,{extensionSlotName:"ohri-dashboard-appointments-slot",state:{}})}}}]);

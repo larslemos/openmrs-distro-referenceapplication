@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_openmrs_esm_patient_immunizations_app=globalThis.webpackChunk_openmrs_esm_patient_immunizations_app||[]).push([[757],{2757:i=>{i.exports=JSON.parse('{"immunizations_link":"Immunizations"}')}}]);

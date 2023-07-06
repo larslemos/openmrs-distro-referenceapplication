@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_openmrs_esm_patient_immunizations_app=globalThis.webpackChunk_openmrs_esm_patient_immunizations_app||[]).push([[807],{7807:i=>{i.exports=JSON.parse('{"immunizations_link":"ការចាក់ថ្នាំបង្ការរោគ"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_ohri_openmrs_esm_ohri_pmtct=globalThis.webpackChunk_ohri_openmrs_esm_ohri_pmtct||[]).push([[553],{1553:(o,h,n)=>{n.d(h,{Z:()=>r});const r=function(o){var h=null==o?0:o.length;return h?o[h-1]:void 0}}}]);

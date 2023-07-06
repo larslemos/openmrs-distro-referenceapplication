@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_openmrs_esm_dispensing_app=self.webpackChunk_openmrs_esm_dispensing_app||[]).push([[49],{1049:(e,n,s)=>{s.r(n),s.d(n,{default:()=>i});var p=s(1672),a=s.n(p),t=s(3907);function i(){return a().createElement(t.ExtensionSlot,{name:"dispensing-dashboard-slot"})}}}]);

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_openmrs_esm_appointments_app=globalThis.webpackChunk_openmrs_esm_appointments_app||[]).push([[319],{8319:p=>{p.exports={}}}]);

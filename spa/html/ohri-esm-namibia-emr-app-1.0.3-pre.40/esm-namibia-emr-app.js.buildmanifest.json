@@ -1,0 +1,176 @@
+{
+  "chunks": [
+    {
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "recorded": false,
+      "size": 22986,
+      "sizes": {
+        "consume-shared": 42,
+        "javascript": 3997,
+        "share-init": 84,
+        "runtime": 18863
+      },
+      "names": [
+        "main"
+      ],
+      "idHints": [],
+      "runtime": [
+        "main"
+      ],
+      "files": [
+        "main.js"
+      ],
+      "auxiliaryFiles": [
+        "main.js.map"
+      ],
+      "hash": "f52bb44f5871763412bf",
+      "childrenByOrder": {}
+    },
+    {
+      "rendered": true,
+      "initial": false,
+      "entry": false,
+      "recorded": false,
+      "size": 7103,
+      "sizes": {
+        "javascript": 7103
+      },
+      "names": [],
+      "idHints": [],
+      "runtime": [
+        "@ohri/esm-namibia-emr-app",
+        "main"
+      ],
+      "files": [
+        "294.js"
+      ],
+      "auxiliaryFiles": [
+        "294.js.map"
+      ],
+      "hash": "eae4000a95e36a04c3ca",
+      "childrenByOrder": {}
+    },
+    {
+      "rendered": true,
+      "initial": false,
+      "entry": false,
+      "recorded": false,
+      "size": 59,
+      "sizes": {
+        "javascript": 59
+      },
+      "names": [],
+      "idHints": [],
+      "runtime": [
+        "@ohri/esm-namibia-emr-app",
+        "main"
+      ],
+      "files": [
+        "574.js"
+      ],
+      "auxiliaryFiles": [],
+      "hash": "e8b0a00cf03aaa83d816",
+      "childrenByOrder": {}
+    },
+    {
+      "rendered": true,
+      "initial": false,
+      "entry": false,
+      "recorded": false,
+      "reason": "split chunk (cache group: defaultVendors)",
+      "size": 391205,
+      "sizes": {
+        "javascript": 391205
+      },
+      "names": [],
+      "idHints": [
+        "vendors"
+      ],
+      "runtime": [
+        "@ohri/esm-namibia-emr-app",
+        "main"
+      ],
+      "files": [
+        "595.js"
+      ],
+      "auxiliaryFiles": [
+        "595.js.map"
+      ],
+      "hash": "f996aa6fde2f06831c1a",
+      "childrenByOrder": {}
+    },
+    {
+      "rendered": false,
+      "initial": false,
+      "entry": false,
+      "recorded": false,
+      "size": 42,
+      "sizes": {
+        "consume-shared": 42
+      },
+      "names": [],
+      "idHints": [],
+      "runtime": [
+        "@ohri/esm-namibia-emr-app",
+        "main"
+      ],
+      "files": [],
+      "auxiliaryFiles": [],
+      "hash": "5ebc373b3d22a08535c2",
+      "childrenByOrder": {}
+    },
+    {
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "recorded": false,
+      "size": 18622,
+      "sizes": {
+        "javascript": 42,
+        "share-init": 84,
+        "runtime": 18496
+      },
+      "names": [
+        "@ohri/esm-namibia-emr-app"
+      ],
+      "idHints": [],
+      "runtime": [
+        "@ohri/esm-namibia-emr-app"
+      ],
+      "files": [
+        "esm-namibia-emr-app.js"
+      ],
+      "auxiliaryFiles": [
+        "esm-namibia-emr-app.js.map"
+      ],
+      "hash": "c75d3291906749724849",
+      "childrenByOrder": {}
+    },
+    {
+      "rendered": true,
+      "initial": false,
+      "entry": false,
+      "recorded": false,
+      "size": 4039,
+      "sizes": {
+        "consume-shared": 42,
+        "javascript": 3997
+      },
+      "names": [],
+      "idHints": [],
+      "runtime": [
+        "@ohri/esm-namibia-emr-app"
+      ],
+      "files": [
+        "983.js"
+      ],
+      "auxiliaryFiles": [
+        "983.js.map"
+      ],
+      "hash": "8b55e8e617846e09b1a4",
+      "childrenByOrder": {}
+    }
+  ]
+}

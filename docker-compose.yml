@@ -20,9 +20,11 @@ services:
       timeout: 5s
     depends_on:
       - backend
+    volumes:
+      - ./spa/html:/usr/share/nginx/html
 
   backend:
-    image: histacoohri/o3-ohri-namibia-backend-distro-2_6:latest
+    image: openmrs/openmrs-reference-application-3-backend:${TAG:-nightly}
     depends_on:
       - db
     environment:

@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_ohri_openmrs_esm_ohri_core_app=globalThis.webpackChunk_ohri_openmrs_esm_ohri_core_app||[]).push([[574],{3574:r=>{r.exports=JSON.parse('{"programs":"Programs"}')}}]);

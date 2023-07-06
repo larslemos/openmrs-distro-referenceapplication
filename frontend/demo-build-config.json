@@ -1,0 +1,31 @@
+{
+  "frontendModules": {
+    "@ohri/openmrs-esm-ohri-core-app": "1.0.8-pre.2566",
+    "@openmrs/esm-dispensing-app": "1.0.1-pre.196",
+    "@ohri/openmrs-esm-ohri-cervical-cancer-app": "1.0.8-pre.2566",
+    "@ohri/openmrs-esm-ohri-covid-app": "1.0.8-pre.2566",
+    "@openmrs/esm-home-app": "4.2.1-pre.226",
+    "@openmrs/esm-patient-programs-app": "4.6.1-pre.1669",
+    "@ohri/openmrs-esm-ohri-hiv-app": "1.0.8-pre.2566",
+    "@openmrs/esm-patient-list-app": "4.5.1-pre.1644",
+    "@openmrs/esm-patient-notes-app": "4.6.1-pre.1669",
+    "@openmrs/esm-patient-banner-app": "4.6.1-pre.1669",
+    "@openmrs/esm-patient-test-results-app": "4.6.1-pre.1669",
+    "@ohri/openmrs-esm-ohri-form-render-app": "1.0.10-pre.2675",
+    "@openmrs/esm-patient-forms-app": "4.6.1-pre.1669",
+    "@openmrs/esm-patient-immunizations-app": "4.6.1-pre.1669",
+    "@openmrs/esm-login-app": "4.5.1-pre.779",
+    "@openmrs/esm-patient-vitals-app": "4.6.1-pre.1669",
+    "@openmrs/esm-patient-biometrics-app": "4.6.1-pre.1669",
+    "@openmrs/esm-patient-appointments-app": "4.6.1-pre.1669",
+    "@openmrs/esm-devtools-app": "4.5.1-pre.779",
+    "@openmrs/esm-primary-navigation-app": "4.5.1-pre.779",
+    "@openmrs/esm-patient-chart-app": "4.6.1-pre.1669",
+    "@openmrs/esm-implementer-tools-app": "4.5.1-pre.779",
+    "@openmrs/esm-patient-registration-app": "4.5.1-pre.1644",
+    "@openmrs/esm-appointments-app": "4.5.1-pre.1644",
+    "@openmrs/esm-patient-search-app": "4.5.1-pre.1644",
+    "@ohri/openmrs-esm-ohri-pmtct": "1.0.10-pre.2675",
+    "@ohri/esm-namibia-emr-app": "1.0.3-pre.40"
+  }
+}

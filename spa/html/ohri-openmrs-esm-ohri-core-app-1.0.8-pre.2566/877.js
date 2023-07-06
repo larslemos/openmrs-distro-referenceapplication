@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_ohri_openmrs_esm_ohri_core_app=globalThis.webpackChunk_ohri_openmrs_esm_ohri_core_app||[]).push([[877],{8877:(e,o,r)=>{r.r(o),r.d(o,{default:()=>t});var s=r(7900),n=r.n(s),a=r(906);const t=function(){return n().createElement(a.ExtensionSlot,{name:"ohri-dashboard-dispensing-slot",state:{}})}}}]);

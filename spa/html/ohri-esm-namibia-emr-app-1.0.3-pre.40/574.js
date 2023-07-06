@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk_ohri_esm_namibia_emr_app=globalThis.webpackChunk_ohri_esm_namibia_emr_app||[]).push([[574],{574:e=>{e.exports=JSON.parse('{"casualGreeting":"hey","formalGreeting":"hello"}')}}]);
