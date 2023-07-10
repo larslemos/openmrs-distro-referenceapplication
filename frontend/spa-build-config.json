@@ -18,7 +18,8 @@
     "@ohri/openmrs-esm-ohri-core-app": "next",
     "@ohri/openmrs-esm-ohri-form-render-app": "next",
     "@ohri/openmrs-esm-ohri-pmtct": "next",
-    "@ohri/esm-namibia-emr-app": "next"
+    "@ohri/esm-namibia-emr-app": "next",
+    "@openmrs/esm-devtools-app": "next"
   },
   "spaPath": "$SPA_PATH",
   "apiUrl": "$API_URL",
