@@ -1020,7 +1020,10 @@
               "id": "next_visit_date",
               "questionOptions": {
                 "concept": "5096AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "date"
+                "rendering": "date",
+                "calculate": {
+                  "calculateExpression": "addDaysToDate(useFieldValue('visit_date'), 30)"
+                }
               },
               "behaviours":[
                 {
