@@ -138,8 +138,5 @@
         ]
       }
     }
-  },
-  "@openmrs/esm-dispensing-app": {
-    "appName": "Dispensing"
   }
 }
