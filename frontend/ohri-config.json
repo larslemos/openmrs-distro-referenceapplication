@@ -39,18 +39,32 @@
     "extensionSlots": {
       "dashboard-links-slot":{
         "remove":[
-          "appointments-ohri-dashboard-ext",
-          "dispensing-ohri-dashboard-ext",
-          "service-queues-ohri-dashboard-ext"
+            "appointments-ohri-dashboard-ext",
+            "dispensing-ohri-dashboard-ext",
+            "service-queues-ohri-dashboard-ext"
         ]
-      }
+      },
+      "ohri-dashboard-appointments-slot": {
+        "add": [
+          "clinical-appointments-dashboard"
+        ]
+      },
+      "ohri-dashboard-dispensing-slot": {
+        "add": [
+          "dispensing-dashboard"
+        ]
+      } 
     }
   },
   "@openmrs/esm-patient-banner-app": {
     "extensionSlots": {
       "patient-actions-slot": {
         "remove": [
-          "add-patient-to-patient-list-button"
+          "add-patient-to-patient-list-button",
+          "start-visit-button",
+          "stop-visit-button",
+          "cancel-visit-button",
+          "add-past-visit-button"
         ]
       }
     },
@@ -106,8 +120,26 @@
     ],
     "sections": ["demographics", "contact", "nextofkin", "relationships"],
     "sectionDefinitions": [
-      { "id": "nextofkin", "name": "Next of Kin", "fields":["nextOfKinName", "nextOfKinContactNo"] },
-      { "id": "relationships", "name": "Create relationship" }
+        { "id": "nextofkin", "name": "Next of Kin", "fields":["nextOfKinName", "nextOfKinContactNo"] },
+        { "id": "relationships", "name": "Create relationship" }
     ]
+  },
+
+  "@openmrs/esm-styleguide": {
+    "Brand color #1": "#1A3054",
+    "Brand color #2": "#131E35",
+    "Brand color #3": "#0078A6"
+  },
+  "@openmrs/esm-primary-navigation-app": {
+    "extensionSlots": {
+      "app-menu-slot": {
+        "remove": [
+          "dispensing-link"
+        ]
+      }
+    }
+  },
+  "@openmrs/esm-dispensing-app": {
+    "appName": "Dispensing"
   }
 }
