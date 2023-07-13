@@ -283,6 +283,7 @@
                 {
                   "intent":"*",
                   "required":"true",
+                  "readonly": "mode == 'edit' && latest_hiv_test_result !== '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? true : false",
                   "hide":{
                     "hideWhenExpression":"latest_hiv_test_result == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                   }
@@ -1088,7 +1089,7 @@
               "id": "transfer-out-to",
               "questionOptions": {
                 "concept": "159495AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-                "rendering": "encounter-location",
+                "rendering": "text",
                 "locationTag": "8d4626ca-7abd-42ad-be48-56767bbcf272"
               },
               "behaviours":[
