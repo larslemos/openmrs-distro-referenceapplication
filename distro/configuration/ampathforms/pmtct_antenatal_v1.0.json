@@ -971,7 +971,7 @@
                   "intent":"*",
                   "required":"false",
                   "hide":{
-                    "hideWhenExpression":"partner_hiv_test_done !== '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                    "hideWhenExpression":"true"
                   }
                 }
               ]
