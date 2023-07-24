@@ -977,6 +977,9 @@
                   "type": "obs",
                   "questionOptions": {
                     "rendering": "date",
+                    "calculate": {
+                      "calculateExpression": "visit_date !== '' ? useFieldValue('visit_date') : ''"
+                    },
                     "concept": "164802AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                     "weeksList": ""
                   },
