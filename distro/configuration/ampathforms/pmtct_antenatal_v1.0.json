@@ -491,7 +491,7 @@
                   "intent":"*",
                   "required":"true",
                   "hide":{
-                    "hideWhenExpression":"isEmpty(hiv_test) || hiv_test !== '8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8' && hiv_test_result !== '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                    "hideWhenExpression":"latest_hiv_test_result == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_hiv_test_status == '8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8' ? latest_art_initiation == '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' : isEmpty(hiv_test) || hiv_test !== '8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8' && hiv_test_result !== '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                   }
                 }
               ]
@@ -499,11 +499,46 @@
             {
               "label": "ART initiation ",
               "type": "obs",
-              "id": "art_remove_initiation",
+              "id": "latest_art_initiation",
               "questionOptions": {
                 "concept": "6e62bf7e-2107-4d09-b485-6e60cbbb2d08",
-                "rendering": "radio",
+                "rendering": "fixed-field",
+                "calculate": {
+                  "calculateExpression": "resolve(api.getLatestObs(patient.id, '6e62bf7e-2107-4d09-b485-6e60cbbb2d08'))?.valueCodeableConcept?.coding[0]?.code"
+                },
                 "answers": [
+                  {
+                    "concept": "160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Already on ART before current pregnancy",
+                    "conceptMappings":[
+                      {
+                        "type":"PIH",
+                        "value":"1257"
+                      },
+                      {
+                        "type":"PIH Malawi",
+                        "value":"7010"
+                      },
+                      {
+                        "type":"CIEL",
+                        "value":"160119"
+                      }
+                    ]
+                  },
+                  {
+                    "concept": "160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    "label": "Started on ART in ANC current pregnancy",
+                    "conceptMappings":[
+                      {
+                        "type":"CIEL",
+                        "value":"160120"
+                      },
+                      {
+                        "type":"PIH",
+                        "value":"1256"
+                      }
+                    ]
+                  },
                   {
                     "concept": "160018AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                     "label": "Refused ART",
