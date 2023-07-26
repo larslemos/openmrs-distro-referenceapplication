@@ -1240,7 +1240,7 @@
                       "intent":"*",
                       "required":"true",
                       "hide":{
-                        "hideWhenExpression":"anc_latest_hiv_test_result == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ?  infantStatus !== '151849AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && infantStatus !== '154223AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' : anc_latest_hiv_test_result == '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || hiv_test_result == '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || anc_hiv_test_status == '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                        "hideWhenExpression":"anc_latest_hiv_test_result == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ?  isEmpty(infantStatus) || infantStatus !== '151849AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' : infantStatus !== '151849AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && infantStatus !== '154223AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || anc_latest_hiv_test_result == '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || hiv_test_result == '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && anc_hiv_test_status == '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || anc_retest_thirty_six_weeks !== '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                       },
                       "validators":[]
                     }
