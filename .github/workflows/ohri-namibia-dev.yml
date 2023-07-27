@@ -36,7 +36,10 @@ jobs:
  
   docker_setup:
     runs-on: ubuntu-latest
-    if: (github.event_name == 'push' || github.event_name == 'pull_request') && github.event.pull_request.merged
+    if: |
+      github.event_name == 'push' ||
+      (github.event_name == 'pull_request' && github.event.pull_request.merged)
+
    
     steps:
       - name: Login to Docker Hub
