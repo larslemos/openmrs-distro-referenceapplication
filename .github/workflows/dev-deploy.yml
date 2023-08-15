@@ -1,0 +1,28 @@
+name: OHRI Dev Deployment
+
+on:
+  push:
+    branches:
+      - dev-deploy
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.2
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: SSH to remote OHRI Dev server via jump host
+        run: |
+          ssh -o "ProxyJump=llemos@reports.globalhealthapp.net:2202" -p 2216 llemos@172.19.0.16 "git clone https://github.com/UCSF-IGHS/openmrs-distro-referenceapplication.git"
