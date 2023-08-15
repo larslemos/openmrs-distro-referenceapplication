@@ -84,7 +84,7 @@
                   "calculateExpression": "client_booked == '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? myValue = useFieldValue('latest_anc_ptracker_number'): ''"
                 }
               },
-              "readonlyExpression": "client_booked == '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && !isEmpty(latest_ptracker_number)",
+              "readonlyExpression": "client_booked == '1065AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && !isEmpty(latest_anc_ptracker_number)",
               "behaviours":[
                 {
                   "intent":"*",
