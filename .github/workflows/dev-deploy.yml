@@ -34,12 +34,19 @@ jobs:
           ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}     
        
       - name: SSH to remote OHRI Dev server 
-        run: |
-            ssh StrictHostKeyChecking=no -T llemos@reports.globalhealthapp.net -p 2202
-      - name: SSH to remote OHRI Dev server via jump host
-        run: |
-            ssh llemos@172.19.0.16 -p 2216 -J llemos@reports.globalhealthapp.net:2202
-              
+        run: | 
+            ssh -o StrictHostKeyChecking=no -T llemos@20.172.182.46 -p 2202
+      # - name: SSH to remote OHRI Dev server via jump host
+      #   run: |
+      #       ssh llemos@172.19.0.16 -p 2216 -J llemos@reports.globalhealthapp.net:2202
+
+  server_alternate:
+      runs-on: ubuntu-latest
+
+      steps:      
+        - name: SSH to remote OHRI Dev server 
+          run: | 
+            ssh -o StrictHostKeyChecking=no -J llemos@reports.globalhealthapp.net:2202 -p 2216 llemos@172.19.0.16          
         
   deploy:
     runs-on: ubuntu-latest
