@@ -15,15 +15,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: webfactory/ssh-agent
-        uses: webfactory/ssh-agent@v0.8.0 
+      - name: Check SSH to remote OHRI Dev status
         run: |
-            ssh-keygen -R 172.19.0.16
-      
-      # - uses: actions/checkout@v2
-      #   name: SSH to remote OHRI Dev server via jump host
+            ssh-keygen -R 172.19.0.16      
+    
+      # - name: SSH to remote OHRI Dev server via jump host
       #     run: |
-      #       ssh-keygen -R 172.19.0.16
+      #       ssh llemos@172.19.0.16 -p 2216 -J llemos@reports.globalhealthapp.net:2202
 
   deploy:
     runs-on: ubuntu-latest
