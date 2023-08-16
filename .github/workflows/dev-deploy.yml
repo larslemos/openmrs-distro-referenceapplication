@@ -47,7 +47,7 @@ jobs:
       steps:      
         - name: SSH to remote OHRI Dev server 
           run: | 
-            ssh -o StrictHostKeyChecking=no -T llemos@172.19.0.16 -p 2216 -J -o StrictHostKeyChecking=no llemos@20.172.182.46:2202
+            ssh -v -o StrictHostKeyChecking=no -T llemos@172.19.0.16 -p 2216 -J -o StrictHostKeyChecking=no llemos@20.172.182.46:2202
             ls -la -t
             cd /opt 
             ls -la -t 
@@ -67,7 +67,7 @@ jobs:
 
       - name: SSH to remote OHRI Dev server via jump host
         run: |
-          ssh -o StrictHostKeyChecking=no -T -J llemos@20.172.182.46:2202 -p 2216 llemos@172.19.0.16
+          ssh -v -o StrictHostKeyChecking=no -T -J llemos@20.172.182.46:2202 -p 2216 llemos@172.19.0.16 
           ls -la -t
           cd /opt
           ls -la -t
