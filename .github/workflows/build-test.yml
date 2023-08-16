@@ -5,7 +5,7 @@ on:
     branches: [main]
 
   push:
-    branches-ignore: [main, 2.x, 2.3.x, 2.6.x]
+    branches-ignore: [main, 2.x, 2.3.x, 2.6.x, dev-deploy]
 
 jobs:
   build:
