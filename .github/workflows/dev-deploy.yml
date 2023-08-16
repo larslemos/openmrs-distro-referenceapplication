@@ -35,7 +35,7 @@ jobs:
        
       - name: SSH to remote OHRI Dev server 
         run: |
-            ssh -t llemos@reports.globalhealthapp.net -p 2202
+            ssh -T llemos@reports.globalhealthapp.net -p 2202
       - name: SSH to remote OHRI Dev server via jump host
         run: |
             ssh llemos@172.19.0.16 -p 2216 -J llemos@reports.globalhealthapp.net:2202
@@ -56,4 +56,4 @@ jobs:
 
       - name: SSH to remote OHRI Dev server via jump host
         run: |
-          ssh -o "ProxyJump=llemos@reports.globalhealthapp.net:2202" -p 2216 llemos@172.19.0.16 
+          ssh -o -tt "ProxyJump=llemos@reports.globalhealthapp.net:2202" -p 2216 llemos@172.19.0.16 
