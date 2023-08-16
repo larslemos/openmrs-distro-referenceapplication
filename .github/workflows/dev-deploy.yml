@@ -83,7 +83,7 @@ jobs:
               -o "StrictHostKeyChecking=no" \
               -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p llemos@20.172.182.46 -p 2202" \
               llemos@172.19.0.16 "\
-              docker-compose -f docker-compose-ohri-dev.yml pull && \
-              docker-compose -f docker-compose-ohri-dev.yml down && \
-              docker-compose -f docker-compose-ohri-dev.yml up -d"
+              docker compose -f docker-compose-ohri-dev.yml pull && \
+              docker compose -f docker-compose-ohri-dev.yml down && \
+              docker compose -f docker-compose-ohri-dev.yml up -d"
           
