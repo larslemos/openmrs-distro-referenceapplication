@@ -15,6 +15,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  
+
+      - name: Copy files to /home/runner/
+        run: |
+          ls -la -t
+          cp -r $GITHUB_WORKSPACE/.ssh/ /home/runner/
+
       - name: List contents of /home/runner/
         run: ls -la /home/runner/
 
@@ -70,7 +78,8 @@ jobs:
 
       - name: SSH to remote OHRI Dev server via jump host
         run: |
-          ssh -v -o StrictHostKeyChecking=no -T -J llemos@20.172.182.46:2202 -p 2216 llemos@172.19.0.16  -o StrictHostKeyChecking=no
+          # ssh -v -o StrictHostKeyChecking=no -T -J llemos@20.172.182.46:2202 -p 2216 llemos@172.19.0.16  -o StrictHostKeyChecking=no
+          ssh llemos@172.19.0.16 -p 2216 -o "UserKnownHostsFile=/dev/null" -o StrictHostKeyChecking=no -o ProxyCommand="ssh -o StrictHostKeyChecking=no -W %h:%p llemos@20.172.182.46 -p 2202"          
           ls -la -t
           cd /opt
           ls -la -t
