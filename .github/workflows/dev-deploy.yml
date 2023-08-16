@@ -19,6 +19,10 @@ jobs:
         uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}
+      - name: Collect Git and SSH config files in a directory that is part of the Docker build context
+        run: |
+          mkdir root-config
+          cp -r ~/.gitconfig  ~/.ssh root-config/
           
       - name: Check SSH to remote OHRI Dev status
         run: |
@@ -32,6 +36,11 @@ jobs:
         uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}
+     
+      - name: Collect Git and SSH config files in a directory that is part of the Docker build context
+        run: |
+          mkdir root-config
+          cp -r ~/.gitconfig  ~/.ssh root-config/
 
       - name: SSH to remote OHRI Dev server 
         run: |
