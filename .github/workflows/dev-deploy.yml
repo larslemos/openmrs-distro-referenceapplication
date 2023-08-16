@@ -24,7 +24,7 @@ jobs:
         run: |
             ssh-keygen -R 172.19.0.16      
   
-  server_connection:
+  server_connection_reports:
     runs-on: ubuntu-latest
 
     steps:
@@ -36,17 +36,21 @@ jobs:
       - name: SSH to remote OHRI Dev server 
         run: | 
             ssh -o StrictHostKeyChecking=no -T llemos@20.172.182.46 -p 2202
+           
       # - name: SSH to remote OHRI Dev server via jump host
       #   run: |
       #       ssh llemos@172.19.0.16 -p 2216 -J llemos@reports.globalhealthapp.net:2202
 
-  server_alternate:
+  server_connection_dev:
       runs-on: ubuntu-latest
 
       steps:      
         - name: SSH to remote OHRI Dev server 
           run: | 
-            ssh -o StrictHostKeyChecking=no -J llemos@reports.globalhealthapp.net:2202 -p 2216 llemos@172.19.0.16          
+            ssh -o StrictHostKeyChecking=no -T llemos@172.19.0.16 -p 2216 -J llemos@20.172.182.46:2202
+            ls -la -t
+            cd /opt 
+            ls -la -t 
         
   deploy:
     runs-on: ubuntu-latest
