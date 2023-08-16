@@ -19,10 +19,6 @@ jobs:
         uses: webfactory/ssh-agent@v0.8.0
         with:
           ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}
-      - name: Collect Git and SSH config files in a directory that is part of the Docker build context
-        run: |
-          mkdir root-config
-          cp -r ~/.gitconfig  ~/.ssh root-config/
 
       - name: Check SSH to remote OHRI Dev status
         run: |
@@ -39,7 +35,7 @@ jobs:
        
       - name: SSH to remote OHRI Dev server 
         run: |
-            ssh llemos@reports.globalhealthapp.net -p 2202
+            ssh -t llemos@reports.globalhealthapp.net -p 2202
       - name: SSH to remote OHRI Dev server via jump host
         run: |
             ssh llemos@172.19.0.16 -p 2216 -J llemos@reports.globalhealthapp.net:2202
