@@ -1237,7 +1237,7 @@
                       "intent":"*",
                       "required":"true",
                       "hide":{
-                        "hideWhenExpression":"anc_latest_hiv_test_result == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ?  isEmpty(infantStatus) || infantStatus !== '151849AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' : infantStatus !== '151849AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && infantStatus !== '154223AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || anc_latest_hiv_test_result == '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || hiv_test_result == '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && anc_hiv_test_status == '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || anc_retest_thirty_six_weeks !== '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                        "hideWhenExpression":"anc_latest_hiv_test_result == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ?  isEmpty(infantStatus) || infantStatus !== '151849AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' : isEmpty(infantStatus) || infantStatus !== '151849AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || hiv_test_result !== '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && anc_retest_thirty_six_weeks !== '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && hiv_test !== '8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8' && anc_hiv_test_status == '664AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || anc_hiv_test_status == '1067AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || anc_hiv_test_status == '1402AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || anc_hiv_test_status == '54b96458-6585-4c4c-a5b1-b3ca7f1be351'"
                       },
                       "validators":[]
                     }
