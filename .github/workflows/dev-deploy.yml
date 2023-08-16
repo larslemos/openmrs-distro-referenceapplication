@@ -15,6 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: webfactory/ssh-agent
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}
+          
       - name: Check SSH to remote OHRI Dev status
         run: |
             ssh-keygen -R 172.19.0.16      
@@ -23,6 +28,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: webfactory/ssh-agent
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}
+
       - name: SSH to remote OHRI Dev server 
         run: |
             ssh llemos@reports.globalhealthapp.net -p 2202
