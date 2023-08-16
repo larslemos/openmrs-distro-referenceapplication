@@ -18,10 +18,14 @@ jobs:
       - name: Check SSH to remote OHRI Dev status
         run: |
             ssh-keygen -R 172.19.0.16      
-    
-      # - name: SSH to remote OHRI Dev server via jump host
-      #     run: |
-      #       ssh llemos@172.19.0.16 -p 2216 -J llemos@reports.globalhealthapp.net:2202
+  
+  server_connection:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH to remote OHRI Dev server via jump host
+        run: |
+            ssh llemos@172.19.0.16 -p 2216 -J llemos@reports.globalhealthapp.net:2202
 
   deploy:
     runs-on: ubuntu-latest
