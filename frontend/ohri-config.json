@@ -138,5 +138,10 @@
         ]
       }
     }
+  },
+  "@ohri/openmrs-esm-ohri-pmtct": {
+    "identifiers": {
+      "preferredIdentifierSource": "691eed12-c0f1-11e2-94be-8c13b969e334"
+    }
   }
 }
