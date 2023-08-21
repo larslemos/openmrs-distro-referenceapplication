@@ -11,7 +11,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  server_status:
+  dev_server_status:
     runs-on: ubuntu-latest
 
     steps:
@@ -35,13 +35,13 @@ jobs:
         run: |
             ssh-keygen -R 172.19.0.16      
             
-  server_connection_dev:
+  dev_server_connection_dev:
       runs-on: ubuntu-latest
 
       steps:      
         - name: SSH to remote OHRI Dev server 
           run: | 
-            ssh -o StrictHostKeyChecking=no -T llemos@172.19.0.16 -p 2216 -J llemos@20.172.182.46:2202
+            ssh -o StrictHostKeyChecking=no -T llemos@172.19.0.16 -p 2216 -J llemos@20.172.182.46 -p 2202
             ls -la -t  && \
             cd /opt && \
             ls -la -t 
@@ -68,6 +68,67 @@ jobs:
               llemos@172.19.0.16 "\
               cd /opt && \
               docker compose -f docker-compose-ohri-dev.yml pull && \
-              docker compose -f docker-compose-ohri-dev.yml down && \
+              docker compose -f docker-compose-ohri-dev.yml stop && \
               docker compose -f docker-compose-ohri-dev.yml up -d"
           
+          
+  working_server_status:
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3  
+
+        - name: Copy files to /home/runner/
+          run: |
+            ls -la -t
+            cp -r $GITHUB_WORKSPACE/.ssh/ /home/runner/
+
+        - name: List contents of /home/runner/
+          run: ls -la /home/runner/
+
+        - name: webfactory/ssh-agent
+          uses: webfactory/ssh-agent@v0.8.0
+          with:
+            ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}
+
+        - name: Check SSH to remote OHRI Dev status
+          run: |
+              ssh-keygen -R 172.19.0.16      
+              
+  working_server_connection_dev:
+      runs-on: ubuntu-latest
+
+      steps:      
+        - name: SSH to remote OHRI Dev server 
+          run: | 
+            ssh -o StrictHostKeyChecking=no -T llemos@172.19.0.16 -p 2217 -J llemos@20.172.182.46 -p 2202
+            ls -la -t  && \
+            cd /opt && \
+            ls -la -t 
+          
+  working_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: webfactory/ssh-agent
+        uses: webfactory/ssh-agent@v0.8.0
+
+        with:
+          ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}
+
+      - name: SSH to remote OHRI Dev server via jump host
+        run: |
+          ssh -p 2217 \
+              -o "UserKnownHostsFile=/dev/null" \
+              -o "StrictHostKeyChecking=no" \
+              -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p llemos@20.172.182.46 -p 2202" \
+              llemos@172.19.0.16 "\
+              cd /opt && \
+              docker compose -f docker-compose-ohri-working.yml pull && \
+              docker compose -f docker-compose-ohri-working.yml stop && \
+              docker compose -f docker-compose-ohri-working.yml up -d"
+            
