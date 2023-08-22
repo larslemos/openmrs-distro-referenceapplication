@@ -142,6 +142,12 @@
   "@ohri/openmrs-esm-ohri-pmtct": {
     "identifiers": {
       "preferredIdentifierSource": "691eed12-c0f1-11e2-94be-8c13b969e334"
+    },
+    "encounterTypes": {
+      "antenatal": "2549af50-75c8-4aeb-87ca-4bb2cef6c69a",
+      "laborAndDelivery": "2678423c-0523-4d76-b0da-18177b439eed",
+      "infantPostnatal": "af1f1b24-d2e8-4282-b308-0bf79b365584",
+      "motherPostnatal": "269bcc7f-04f8-4ddc-883d-7a3a0d569aad"
     }
   }
 }
