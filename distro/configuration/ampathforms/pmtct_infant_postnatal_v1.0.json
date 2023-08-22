@@ -821,7 +821,7 @@
                     {
                       "type":"js_expression",
                       "failsWhenExpression":"isDateBefore(myValue, patient.birthDate)",
-                      "message":"Infant outcome date can not be before the date of birth"
+                      "message":"Infant outcome date can not be earlier then date of birth"
                     }
                   ]
                 }
