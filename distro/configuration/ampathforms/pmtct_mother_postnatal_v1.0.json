@@ -437,7 +437,7 @@
                   "required":"true",
                   "unspecified":"true",
                   "hide":{
-                    "hideWhenExpression":"isEmpty(latest_art_number) && testStatusAtANC == '8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8' || ancHivTestResult == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'? false : pnc_art_initiation !== '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && pnc_art_initiation !== '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                    "hideWhenExpression":"isEmpty(latest_art_number) && latest_art_initiation == '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? false : pnc_art_initiation !== '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && pnc_art_initiation !== '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                   },
                   "validators":[
 
@@ -480,7 +480,7 @@
                   "required":"true",
                   "unspecified":"true",
                   "hide":{
-                    "hideWhenExpression":"isEmpty(latest_art_start_date) && testStatusAtANC == '8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8' || ancHivTestResult == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'? false : pnc_art_initiation !== '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && pnc_art_initiation !== '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                    "hideWhenExpression":"isEmpty(latest_art_start_date) && latest_art_initiation == '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? false : pnc_art_initiation !== '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' && pnc_art_initiation !== '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                   },
                   "validators":[
 
