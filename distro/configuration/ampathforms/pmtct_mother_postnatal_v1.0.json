@@ -239,13 +239,52 @@
                 {
                   "intent":"*",
                   "required":"true",
-                  "readonly": "mode == 'edit'  !isEmpty(ancHivTestResult) ? true : false",
+                  "readonly": "mode == 'edit' && !isEmpty(latest_hiv_test_status) || isEmpty(hiv_test_status_pnc) ? true : false",
                   "hide":{
                     "hideWhenExpression":"testStatusAtANC == '8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8' || ancHivTestResult == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                   },
                   "validators":[
 
                   ]
+                }
+              ]
+            },
+            {
+              "label": "Latest HIV Test Status",
+              "type": "obs",
+              "id": "latest_hiv_test_status",
+              "questionOptions": {
+                "concept": "164401AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "fixed-value",
+                "calculate": {
+                  "calculateExpression": "resolve(api.getLatestObs(patient.id, '164401AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', '269bcc7f-04f8-4ddc-883d-7a3a0d569aad'))?.valueCodeableConcept?.coding[0]?.code"
+                },
+                "answers": [
+                  {
+                    "concept": "6f041992-f0fd-4ec7-b7b6-c06b0f60bf3f",
+                    "label": "Tested for HIV during this visit"
+                  },
+                  {
+                    "concept": "8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8",
+                    "label": "Previously known positive"
+                  },
+                  {
+                    "concept": "d18fa331-f158-47d0-b344-cf147c7125a4",
+                    "label": "Not tested for HIV during this visit"
+                  },
+                  {
+                    "concept": "54b96458-6585-4c4c-a5b1-b3ca7f1be351",
+                    "label": "Missing"
+                  }
+                ]
+              },
+              "behaviours":[
+                {
+                  "intent":"*",
+                  "required":"false",
+                  "hide":{
+                    "hideWhenExpression":"true"
+                  }
                 }
               ]
             },
