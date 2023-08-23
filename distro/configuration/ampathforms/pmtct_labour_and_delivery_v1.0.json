@@ -244,9 +244,48 @@
                 {
                   "intent":"*",
                   "required":"true",
-                  "readonly": "mode == 'edit' && !isEmpty(anc_latest_hiv_test_result) ? true : false",
+                  "readonly": "mode == 'edit' && isEmpty(latest_hiv_test_status) || isEmpty(anc_hiv_test_status) ? true : false",
                   "hide":{
                     "hideWhenExpression":"anc_latest_hiv_test_result == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
+                  }
+                }
+              ]
+            },
+            {
+              "label": "Latest HIV Test Status",
+              "type": "obs",
+              "id": "latest_hiv_test_status",
+              "questionOptions": {
+                "concept": "164401AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "rendering": "fixed-value",
+                "calculate": {
+                  "calculateExpression": "resolve(api.getLatestObs(patient.id, '164401AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', '2678423c-0523-4d76-b0da-18177b439eed'))?.valueCodeableConcept?.coding[0]?.code"
+                },
+                "answers": [
+                  {
+                    "concept": "6f041992-f0fd-4ec7-b7b6-c06b0f60bf3f",
+                    "label": "Tested for HIV during this visit"
+                  },
+                  {
+                    "concept": "8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8",
+                    "label": "Previously known positive"
+                  },
+                  {
+                    "concept": "d18fa331-f158-47d0-b344-cf147c7125a4",
+                    "label": "Not tested for HIV during this visit"
+                  },
+                  {
+                    "concept": "54b96458-6585-4c4c-a5b1-b3ca7f1be351",
+                    "label": "Missing"
+                  }
+                ]
+              },
+              "behaviours":[
+                {
+                  "intent":"*",
+                  "required":"false",
+                  "hide":{
+                    "hideWhenExpression":"true"
                   }
                 }
               ]
