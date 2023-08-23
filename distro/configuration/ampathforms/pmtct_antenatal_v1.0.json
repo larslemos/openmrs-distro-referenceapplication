@@ -283,7 +283,7 @@
                 {
                   "intent":"*",
                   "required":"true",
-                  "readonly": "mode == 'edit' && latest_hiv_test_result !== '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_hiv_test_status == '8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8' ? true : false",
+                  "readonly": "mode == 'edit' && !isEmpty(latest_hiv_test_result) || !isEmpty(latest_hiv_test_status) ? true : false",
                   "hide":{
                     "hideWhenExpression":"latest_hiv_test_result == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_hiv_test_status == '8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8' || latest_art_initiation == '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                   }

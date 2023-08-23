@@ -239,7 +239,7 @@
                 {
                   "intent":"*",
                   "required":"true",
-                  "readonly": "mode == 'edit' && ancHivTestResult !== '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' ? true : false",
+                  "readonly": "mode == 'edit'  !isEmpty(ancHivTestResult) ? true : false",
                   "hide":{
                     "hideWhenExpression":"testStatusAtANC == '8b8951a8-e8d6-40ca-ad70-89e8f8f71fa8' || ancHivTestResult == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                   },
