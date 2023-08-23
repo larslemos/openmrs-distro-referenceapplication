@@ -28,32 +28,32 @@
         ]
       },
       "action-menu-non-chart-items-slot": {
-        "remove":[
-          "patient-list-action-menu"
-        ]
+        "remove": ["patient-list-action-menu"]
       }
     },
-    "notesConceptUuids": ["161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "437d1e25-e7ab-481c-aabc-01f21c6cdef1"]
+    "notesConceptUuids": [
+      "161011AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "437d1e25-e7ab-481c-aabc-01f21c6cdef1"
+    ],
+    "logo": {
+      "src": "namibia_ohri_logo_darkbg.png"
+    }
   },
   "@ohri/openmrs-esm-ohri-core-app": {
     "extensionSlots": {
-      "dashboard-links-slot":{
-        "remove":[
-            "appointments-ohri-dashboard-ext",
-            "dispensing-ohri-dashboard-ext",
-            "service-queues-ohri-dashboard-ext"
+      "dashboard-links-slot": {
+        "remove": [
+          "appointments-ohri-dashboard-ext",
+          "dispensing-ohri-dashboard-ext",
+          "service-queues-ohri-dashboard-ext"
         ]
       },
       "ohri-dashboard-appointments-slot": {
-        "add": [
-          "clinical-appointments-dashboard"
-        ]
+        "add": ["clinical-appointments-dashboard"]
       },
       "ohri-dashboard-dispensing-slot": {
-        "add": [
-          "dispensing-dashboard"
-        ]
-      } 
+        "add": ["dispensing-dashboard"]
+      }
     }
   },
   "@openmrs/esm-patient-banner-app": {
@@ -120,8 +120,12 @@
     ],
     "sections": ["demographics", "contact", "nextofkin", "relationships"],
     "sectionDefinitions": [
-        { "id": "nextofkin", "name": "Next of Kin", "fields":["nextOfKinName", "nextOfKinContactNo"] },
-        { "id": "relationships", "name": "Create relationship" }
+      {
+        "id": "nextofkin",
+        "name": "Next of Kin",
+        "fields": ["nextOfKinName", "nextOfKinContactNo"]
+      },
+      { "id": "relationships", "name": "Create relationship" }
     ]
   },
 
@@ -133,10 +137,16 @@
   "@openmrs/esm-primary-navigation-app": {
     "extensionSlots": {
       "app-menu-slot": {
-        "remove": [
-          "dispensing-link"
-        ]
+        "remove": ["dispensing-link"]
       }
+    },
+    "logo": {
+      "src": "namibia_ohri_logo_darkbg.png"
+    }
+  },
+  "@openmrs/esm-login-app": {
+    "logo": {
+      "src": "namibia_ohri_logo_lightbg.png"
     }
   },
   "@ohri/openmrs-esm-ohri-pmtct": {
