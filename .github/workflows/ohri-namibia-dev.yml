@@ -143,7 +143,7 @@ jobs:
         run: echo "::set-output name=image::${{ steps.build-and-push.output.digest }}"
 
   namibia_dev_server_status:
-      if: github.ref == 'refs/heads/dev-deploy' 
+      if: github.ref == 'refs/heads/dev' 
       runs-on: ubuntu-latest
 
       steps:
@@ -203,12 +203,12 @@ jobs:
               -o "StrictHostKeyChecking=no" \
               -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p ssh llemos@reports.globalhealthapp.net -p 3220" \
               cd /opt && \
-              docker compose -f docker-compose-ohri-dev.yml pull && \
-              docker compose -f docker-compose-ohri-dev.yml stop && \
-              docker compose -f docker-compose-ohri-dev.yml up -d"
+              docker compose -f docker-compose-ohri-namibia-dev.yml pull && \
+              docker compose -f docker-compose-ohri-namibia-dev.yml stop && \
+              docker compose -f docker-compose-ohri-namibia-dev.yml up -d"
                   
   namibia_working_server_status:
-    if: github.ref == 'refs/heads/working-deploy' 
+    if: github.ref == 'refs/heads/working' 
     runs-on: ubuntu-latest
 
     steps:
@@ -267,6 +267,6 @@ jobs:
               -o "StrictHostKeyChecking=no" \
               -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p llemos@reports.globalhealthapp.net -p 3221 \
               cd /opt && \
-              docker compose -f docker-compose-ohri-working.yml pull && \
-              docker compose -f docker-compose-ohri-working.yml stop && \
-              docker compose -f docker-compose-ohri-working.yml up -d"
+              docker compose -f docker-compose-ohri-namibia-working.yml pull && \
+              docker compose -f docker-compose-ohri-namibia-working.yml stop && \
+              docker compose -f docker-compose-ohri-namibia-working.yml up -d"
