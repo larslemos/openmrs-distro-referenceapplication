@@ -2,7 +2,7 @@ name: Build and Validate Configuration
 
 on:
   pull_request:
-    branches: [main]
+    branches: [demo, dev, working]
 
   push:
     branches-ignore: [main, 2.x, 2.3.x, 2.6.x]
