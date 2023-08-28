@@ -4,10 +4,8 @@ on:
   push:
     branches:
       - dev
-      - main
-      - working
-  pull_request:
-    types: [opened, synchronize, closed] 
+      - demo
+      - working 
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
@@ -17,6 +15,7 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged
     strategy:
         matrix:
           java: [ '8', '11' ]
@@ -153,7 +152,8 @@ jobs:
         - name: Copy files to /home/runner/
           run: |
             ls -la -t
-            cp -r $GITHUB_WORKSPACE/.ssh/ /home/runner/
+            cp -r $GITHUB_WORKSPACE/.github/.ssh/ /home/runner/
+            ls -la -t $GITHUB_WORKSPACE/
 
         - name: List contents of /home/runner/
           run: ls -la /home/runner/
@@ -212,11 +212,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  
-      - name: Wait for 2 minutos - Let Images reflect on Docker Hub
-        run: sleep 120
-      - name: Checkout repository
-        uses: actions/checkout@v3  `
+        uses: actions/checkout@v3
+        with:
+            ref: working
 
       - name: Copy files to /home/runner/
         run: |
