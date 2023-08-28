@@ -13,8 +13,6 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  ssh_test: 
-
   build:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged
