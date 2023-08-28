@@ -155,7 +155,7 @@ jobs:
           run: |
             ls -la -t $GITHUB_WORKSPACE/.github
             cp -r $GITHUB_WORKSPACE/.github/ssh/ /home/runner/
-            ls -la -t $GITHUB_WORKSPACE/.github/ssh/
+            ls -la -t $GITHUB_WORKSPACE/.github/ssh/ 
 
         - name: List contents of /home/runner/
           run: ls -la /home/runner/
@@ -221,7 +221,7 @@ jobs:
       - name: Copy files to /home/runner/
         run: |
           ls -la -t
-          cp -r $GITHUB_WORKSPACE/.github/.ssh/ /home/runner/
+          cp -r $GITHUB_WORKSPACE/.github/ssh/ /home/runner/
           ls -la -t $GITHUB_WORKSPACE/
 
       - name: List contents of /home/runner/
