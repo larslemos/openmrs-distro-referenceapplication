@@ -17,6 +17,11 @@ jobs:
       runs-on: ubuntu-latest
       
       steps:      
+        - name: webfactory/ssh-agent
+          uses: webfactory/ssh-agent@v0.8.0
+          with:
+            ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}
+              
         - name: SSH to remote OHRI Dev server 
           run: | 
             ssh -o StrictHostKeyChecking=no llemos@reports.globalhealthapp.net -p 3220 -v
@@ -28,6 +33,11 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:      
+          - name: webfactory/ssh-agent
+            uses: webfactory/ssh-agent@v0.8.0
+            with:
+              ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}
+              
           - name: SSH to remote OHRI Dev server 
             run: | 
               ssh -o StrictHostKeyChecking=no llemos@reports.globalhealthapp.net -p 3221 -v
@@ -38,7 +48,12 @@ jobs:
   namibia_demo_server_connection:
         runs-on: ubuntu-latest
 
-        steps:      
+        steps:   
+          - name: webfactory/ssh-agent
+            uses: webfactory/ssh-agent@v0.8.0
+            with:
+              ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}   
+
           - name: SSH to remote OHRI Dev server 
             run: | 
               ssh -o StrictHostKeyChecking=no llemos@reports.globalhealthapp.net -p 2202 -v
