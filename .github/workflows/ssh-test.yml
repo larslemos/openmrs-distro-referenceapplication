@@ -3,9 +3,8 @@ name: OHRI Namibia SSH
 on:
   push:
     branches:
-      - dev
-      - demo
-      - working 
+      - ssh-test
+
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
