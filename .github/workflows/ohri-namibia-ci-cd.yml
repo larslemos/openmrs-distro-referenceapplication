@@ -200,14 +200,15 @@ jobs:
 
       - name: SSH to remote OHRI Dev server via jump host
         run: |
-          ssh -p 2216 \
-              -o "UserKnownHostsFile=/dev/null" \
-              -o "StrictHostKeyChecking=no" \
-              -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p ssh llemos@reports.globalhealthapp.net -p 3220" \
-              "cd /opt && \
-              docker compose -f docker-compose-ohri-namibia-dev.yml pull && \
-              docker compose -f docker-compose-ohri-namibia-dev.yml stop && \
-              docker compose -f docker-compose-ohri-namibia-dev.yml up -d"
+            ssh -p 2216 \
+            -o "UserKnownHostsFile=/dev/null" \
+            -o "StrictHostKeyChecking=no" \
+            -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p ssh llemos@reports.globalhealthapp.net -p 3220" \
+            "cd /opt && \
+            docker compose -f docker-compose-ohri-namibia-dev.yml pull && \
+            docker compose -f docker-compose-ohri-namibia-dev.yml stop && \
+            docker compose -f docker-compose-ohri-namibia-dev.yml up -d"
+      
                   
   namibia_working_server_status:
     if: github.ref == 'refs/heads/working' 
