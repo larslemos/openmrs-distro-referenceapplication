@@ -204,7 +204,7 @@ jobs:
               -o "UserKnownHostsFile=/dev/null" \
               -o "StrictHostKeyChecking=no" \
               -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p ssh llemos@reports.globalhealthapp.net -p 3220" \
-              cd /opt && \
+              "cd /opt && \
               docker compose -f docker-compose-ohri-namibia-dev.yml pull && \
               docker compose -f docker-compose-ohri-namibia-dev.yml stop && \
               docker compose -f docker-compose-ohri-namibia-dev.yml up -d"
@@ -277,8 +277,8 @@ jobs:
           ssh -p 2217 \
               -o "UserKnownHostsFile=/dev/null" \
               -o "StrictHostKeyChecking=no" \
-              -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p llemos@reports.globalhealthapp.net -p 3221 \
-              cd /opt && \
+              -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p llemos@reports.globalhealthapp.net -p 3221" \
+              "cd /opt && \
               docker compose -f docker-compose-ohri-namibia-working.yml pull && \
               docker compose -f docker-compose-ohri-namibia-working.yml stop && \
               docker compose -f docker-compose-ohri-namibia-working.yml up -d"
@@ -350,8 +350,8 @@ jobs:
             ssh -p 2303 \
                 -o "UserKnownHostsFile=/dev/null" \
                 -o "StrictHostKeyChecking=no" \
-                -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p llemos@reports.globalhealthapp.net -p 2202 \
-                cd /opt && \
+                -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p llemos@reports.globalhealthapp.net -p 2202" \
+                "cd /opt && \
                 docker compose -f docker-compose-ohri-namibia-demo.yml pull && \
                 docker compose -f docker-compose-ohri-namibia-demo.yml stop && \
                 docker compose -f docker-compose-ohri-namibia-demo.yml up -d"
