@@ -173,7 +173,7 @@ jobs:
       steps:      
         - name: SSH to remote OHRI Dev server 
           run: | 
-            ssh -o StrictHostKeyChecking=no -T ssh llemos@reports.globalhealthapp.net -p 3220
+            ssh -o StrictHostKeyChecking=no -T llemos@reports.globalhealthapp.net -p 3220
             ls -la -t  && \
             cd /opt && \
             ls -la -t 
@@ -246,7 +246,7 @@ jobs:
             cd /opt && \
             ls -la -t 
           
-  working_deploy:
+  namibia_working_deploy:
     runs-on: ubuntu-latest
     needs: namibia_working_server_status
 
@@ -272,3 +272,72 @@ jobs:
               docker compose -f docker-compose-ohri-namibia-working.yml pull && \
               docker compose -f docker-compose-ohri-namibia-working.yml stop && \
               docker compose -f docker-compose-ohri-namibia-working.yml up -d"
+
+  namibia_demo_server_status:
+    if: github.ref == 'refs/heads/working' 
+    runs-on: ubuntu-latest
+    needs: docker_staging_backend
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+            ref: working
+
+      - name: Copy files to /home/runner/
+        run: |
+          ls -la -t
+          cp -r $GITHUB_WORKSPACE/.github/.ssh/ /home/runner/
+          ls -la -t $GITHUB_WORKSPACE/
+
+      - name: List contents of /home/runner/
+        run: ls -la /home/runner/
+
+      - name: webfactory/ssh-agent
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}
+
+      - name: Check SSH to remote OHRI Dev status
+        run: |
+            ssh-keygen -R 172.19.0.12      
+            
+  namibia_demo_server_connection:
+      runs-on: ubuntu-latest
+      needs: namibia_demo_server_status
+
+      steps:      
+        - name: SSH to remote OHRI Dev server 
+          run: | 
+            ssh -o StrictHostKeyChecking=no -T llemos@reports.globalhealthapp.net -p 3221
+            ls -la -t  && \
+            cd /opt && \
+            ls -la -t 
+          
+  namibia_demo_deploy:
+    runs-on: ubuntu-latest
+      needs: namibia_working_server_status
+
+      if: (github.event_name == 'push' ||  github.event.pull_request.merged) 
+
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: webfactory/ssh-agent
+          uses: webfactory/ssh-agent@v0.8.0
+
+          with:
+            ssh-private-key: ${{ secrets.LL_SSH_PRIVATE_KEY }}
+
+        - name: SSH to remote OHRI Dev server via jump host
+          run: |
+            ssh -p 2217 \
+                -o "UserKnownHostsFile=/dev/null" \
+                -o "StrictHostKeyChecking=no" \
+                -o "ProxyCommand=ssh -o StrictHostKeyChecking=no -W %h:%p llemos@reports.globalhealthapp.net -p 3221 \
+                cd /opt && \
+                docker compose -f docker-compose-ohri-namibia-demo.yml pull && \
+                docker compose -f docker-compose-ohri-namibia-demo.yml stop && \
+                docker compose -f docker-compose-ohri-namibia-demo.yml up -d"
+
