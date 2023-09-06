@@ -244,7 +244,7 @@
                 {
                   "intent":"*",
                   "required":"true",
-                  "readonly": "mode == 'edit' && isEmpty(latest_hiv_test_status) || mode == 'edit' &&  isEmpty(myValue) ? true : false",
+                  "readonly": "mode == 'edit' && isEmpty(latest_hiv_test_status) || mode == 'edit' &&  isEmpty(anc_hiv_test_status) ? true : false",
                   "hide":{
                     "hideWhenExpression":"anc_latest_hiv_test_result == '138571AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160119AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' || latest_art_initiation == '160120AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'"
                   }
