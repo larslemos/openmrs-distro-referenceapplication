@@ -21,9 +21,9 @@ RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/modules /openmrs/distribu
 RUN cp -R /openmrs_distro/distro/target/sdk-distro/web/owa /openmrs/distribution/openmrs_owas
 
 #Include Custom Modules for Namibia Distro
-RUN ls la
-RUN cp  /openmrs_distro/initializer-2.6.0-SNAPSHOT.omod /openmrs/distribution/openmrs_modules
-RUN cp /openmrs_distro/distro/namibia-1.5.omod /openmrs/distribution/openmrs_modules
+
+RUN cp distro/initializer-2.6.0-SNAPSHOT.omod /openmrs/distribution/openmrs_modules
+RUN cp distro/namibia-1.5.omod /openmrs/distribution/openmrs_modules
 
 # Clean up after copying needed artifacts
 RUN mvn clean $MVN_ARGS_SETTINGS
